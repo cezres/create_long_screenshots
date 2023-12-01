@@ -236,7 +236,7 @@ class _AppFlowyEditorBuilderState extends State<AppFlowyEditorBuilder>
         bold: kDefaultTextStyle.copyWith(
           fontSize: fontSize,
           color: Colors.black,
-          fontWeight: FontWeight.w800,
+          fontWeight: FontWeight.bold,
         ),
         italic: kDefaultTextStyle.copyWith(
           fontSize: fontSize,

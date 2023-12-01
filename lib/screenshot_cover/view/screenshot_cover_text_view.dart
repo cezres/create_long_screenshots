@@ -53,7 +53,7 @@ class ScreenshotCoverTextView extends StatelessWidget {
                             state,
                             style: kDefaultTextStyle.copyWith(
                               fontSize: 24,
-                              fontWeight: FontWeight.w700,
+                              fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
                           ),

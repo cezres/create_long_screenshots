@@ -102,7 +102,7 @@ class ScreenshotCoverCubit extends CachedCubit<ScreenshotCoverState> {
                     style: kDefaultTextStyle.copyWith(
                       color: Colors.white,
                       fontSize: 40,
-                      fontWeight: FontWeight.w800,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),

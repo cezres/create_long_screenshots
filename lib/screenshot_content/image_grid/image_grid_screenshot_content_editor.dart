@@ -197,7 +197,7 @@ class _ScreenshotContentGridEditorDialogState
               "宽高比",
               style: kDefaultTextStyle.copyWith(
                 fontSize: 16,
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
@@ -262,7 +262,7 @@ class _ScreenshotContentGridEditorDialogState
             title,
             style: kDefaultTextStyle.copyWith(
               fontSize: 16,
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
