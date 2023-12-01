@@ -1,12 +1,12 @@
 import 'dart:typed_data';
 
 import 'package:create_long_screenshots/common/cached_cubit.dart';
-import 'package:create_long_screenshots/common/sidebar.dart';
 import 'package:create_long_screenshots/image_picker/image_picker.dart';
 import 'package:create_long_screenshots/main.dart';
 import 'package:create_long_screenshots/screenshot_content/cubit/screenshot_content_cubit.dart';
 import 'package:create_long_screenshots/screenshot_cover/cubit/screenshot_cover_cubit.dart';
 import 'package:create_long_screenshots/screenshots/cubit/screenshots_cubit.dart';
+import 'package:create_long_screenshots/widgets/sidebar/sidebar.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

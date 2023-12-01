@@ -1,4 +1,5 @@
-import 'package:create_long_screenshots/common/sidebar.dart';
+import 'package:create_long_screenshots/widgets/mouse_enter_builder.dart';
+import 'package:create_long_screenshots/widgets/sidebar/sidebar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

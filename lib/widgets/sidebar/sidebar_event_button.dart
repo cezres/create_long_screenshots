@@ -1,4 +1,4 @@
-import 'package:create_long_screenshots/common/sidebar.dart';
+import 'package:create_long_screenshots/widgets/sidebar/sidebar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

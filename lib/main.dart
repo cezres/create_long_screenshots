@@ -1,11 +1,11 @@
 import 'package:appflowy_editor/appflowy_editor.dart';
-import 'package:create_long_screenshots/common/sidebar.dart';
 import 'package:create_long_screenshots/image_picker/cubit/image_caches_cubit.dart';
 import 'package:create_long_screenshots/screenshot_cover/cubit/screenshot_cover_cubit.dart';
 import 'package:create_long_screenshots/screenshot_cover/view/screenshot_cover_page.dart';
 import 'package:create_long_screenshots/screenshot_page/view/screenshot_page_view.dart';
 import 'package:create_long_screenshots/screenshots/cubit/screenshots_cubit.dart';
 import 'package:create_long_screenshots/web_hydrated_storage.dart';
+import 'package:create_long_screenshots/widgets/sidebar/sidebar.dart';
 import 'package:create_long_screenshots/widgets/sidebar/sidebar_page_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

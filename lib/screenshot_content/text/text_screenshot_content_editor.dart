@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:appflowy_editor/appflowy_editor.dart';
 import 'package:create_long_screenshots/common/is_mobileBrowser.dart';
-import 'package:create_long_screenshots/common/sidebar.dart';
 import 'package:create_long_screenshots/main.dart';
 import 'package:create_long_screenshots/screenshot_content/image/image_screenshot_content_editor.dart';
 import 'package:create_long_screenshots/screenshot_content/text/text_screenshot_content.dart';
+import 'package:create_long_screenshots/widgets/sidebar/sidebar.dart';
 import 'package:create_long_screenshots/widgets/sidebar/sidebar_event_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

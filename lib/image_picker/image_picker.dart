@@ -1,8 +1,8 @@
 import 'dart:typed_data';
 
 import 'package:create_long_screenshots/common/generate_unique_id.dart';
-import 'package:create_long_screenshots/common/sidebar.dart';
 import 'package:create_long_screenshots/image_picker/cubit/image_caches_cubit.dart';
+import 'package:create_long_screenshots/widgets/sidebar/sidebar.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

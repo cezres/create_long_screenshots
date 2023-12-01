@@ -1,7 +1,7 @@
-import 'package:create_long_screenshots/common/sidebar.dart';
 import 'package:create_long_screenshots/image_picker/view/cached_image_view.dart';
 import 'package:create_long_screenshots/main.dart';
 import 'package:create_long_screenshots/screenshot_content/image/image_screenshot_content.dart';
+import 'package:create_long_screenshots/widgets/sidebar/sidebar.dart';
 import 'package:create_long_screenshots/widgets/sidebar/sidebar_event_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
