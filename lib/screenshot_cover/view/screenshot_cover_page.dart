@@ -40,39 +40,51 @@ class ScreenshotCoverPage extends StatelessWidget {
     ]);
 
     return ContentArea(
-      child: BlocBuilder<ScreenshotsCubit, ScreenshotsState>(
-        buildWhen: (previous, current) =>
-            previous.numberOfRow != current.numberOfRow ||
-            previous.numberOfColumn != current.numberOfColumn,
-        builder: (context, state) => Center(
-          child: AspectRatio(
-            aspectRatio: state.numberOfRow / state.numberOfColumn,
-            child: Stack(
-              children: [
-                Positioned.fill(
-                  child: BlocSelector<ScreenshotCoverCubit,
-                      ScreenshotCoverState, int>(
-                    selector: (state) => state.imageId,
-                    builder: (context, state) => CachedImageBuilder(
-                      imageId: state,
-                      builder: (context, image) => image == null
-                          ? const SizedBox.shrink()
-                          : Image.memory(
-                              image,
-                              fit: BoxFit.cover,
-                            ),
+      child: Center(
+        child: BlocBuilder<ScreenshotsCubit, ScreenshotsState>(
+          buildWhen: (previous, current) =>
+              previous.numberOfRow != current.numberOfRow ||
+              previous.numberOfColumn != current.numberOfColumn,
+          builder: (context, state) {
+            if (state.pages.isEmpty) {
+              return SidebarEventButton(
+                label: "设置封面",
+                onPressed: () {
+                  kContext
+                      .read<ScreenshotCoverCubit>()
+                      .pickCoverImage(kContext);
+                },
+              );
+            }
+            return AspectRatio(
+              aspectRatio: state.numberOfRow / state.numberOfColumn,
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: BlocSelector<ScreenshotCoverCubit,
+                        ScreenshotCoverState, int>(
+                      selector: (state) => state.imageId,
+                      builder: (context, state) => CachedImageBuilder(
+                        imageId: state,
+                        builder: (context, image) => image == null
+                            ? const SizedBox.shrink()
+                            : Image.memory(
+                                image,
+                                fit: BoxFit.cover,
+                              ),
+                      ),
                     ),
                   ),
-                ),
-                Positioned.fill(
-                  child: ScreenshotCoverTextView(
-                    numberOfRow: state.numberOfRow,
-                    numberOfColumn: state.numberOfColumn,
-                  ),
-                )
-              ],
-            ),
-          ),
+                  Positioned.fill(
+                    child: ScreenshotCoverTextView(
+                      numberOfRow: state.numberOfRow,
+                      numberOfColumn: state.numberOfColumn,
+                    ),
+                  )
+                ],
+              ),
+            );
+          },
         ),
       ),
     );
