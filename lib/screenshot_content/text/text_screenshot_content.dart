@@ -75,7 +75,23 @@ class TextScreenshotContentCubit
 
 class TextScreenshotContentState extends Equatable {
   const TextScreenshotContentState({
-    this.documentJson = const {},
+    this.documentJson = const {
+      'document': {
+        'type': 'page',
+        'children': [
+          {
+            'type': 'paragraph',
+            'data': {
+              'delta': [
+                {
+                  'insert': '点击以编辑文本',
+                },
+              ],
+            }
+          }
+        ],
+      }
+    },
     this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
   });
 

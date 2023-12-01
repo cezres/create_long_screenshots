@@ -128,7 +128,10 @@ class _MainPageState extends State<MainPage> {
           children: [
             Container(
               color: Theme.of(context).colorScheme.onInverseSurface,
-              child: const MainContentView(),
+              child: const Padding(
+                padding: EdgeInsets.only(top: 44 + 16),
+                child: MainContentView(),
+              ),
             ),
             Positioned(
               left: 0,

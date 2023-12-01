@@ -38,12 +38,12 @@ class TextScreenshotContentPreview extends StatelessWidget {
 
   Widget _buildContent(BuildContext context,
       {required TextScreenshotContentState state}) {
-    if (state.documentJson.isEmpty) {
-      return const Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Text("点击以编辑文本"),
-      );
-    }
+    // if (state.documentJson.isEmpty) {
+    //   return const Padding(
+    //     padding: EdgeInsets.all(8.0),
+    //     child: Text("点击以编辑文本"),
+    //   );
+    // }
     return AppFlowyEditorBuilder(
       cubit: cubit,
       editable: false,

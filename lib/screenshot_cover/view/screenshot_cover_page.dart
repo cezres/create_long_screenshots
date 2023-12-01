@@ -46,16 +46,6 @@ class ScreenshotCoverPage extends StatelessWidget {
               previous.numberOfRow != current.numberOfRow ||
               previous.numberOfColumn != current.numberOfColumn,
           builder: (context, state) {
-            if (state.pages.isEmpty) {
-              return SidebarEventButton(
-                label: "设置封面",
-                onPressed: () {
-                  kContext
-                      .read<ScreenshotCoverCubit>()
-                      .pickCoverImage(kContext);
-                },
-              );
-            }
             return AspectRatio(
               aspectRatio: state.numberOfRow / state.numberOfColumn,
               child: Stack(

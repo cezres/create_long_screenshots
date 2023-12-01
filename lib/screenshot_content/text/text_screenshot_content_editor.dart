@@ -231,26 +231,21 @@ class _AppFlowyEditorBuilderState extends State<AppFlowyEditorBuilder>
       textStyleConfiguration: TextStyleConfiguration(
         text: kDefaultTextStyle.copyWith(
           fontSize: fontSize,
-          color: Colors.black,
         ),
         bold: kDefaultTextStyle.copyWith(
           fontSize: fontSize,
-          color: Colors.black,
           fontWeight: FontWeight.bold,
         ),
         italic: kDefaultTextStyle.copyWith(
           fontSize: fontSize,
-          color: Colors.black,
           fontStyle: FontStyle.italic,
         ),
         underline: kDefaultTextStyle.copyWith(
           fontSize: fontSize,
-          color: Colors.black,
           decoration: TextDecoration.underline,
         ),
         strikethrough: kDefaultTextStyle.copyWith(
           fontSize: fontSize,
-          color: Colors.black,
           decoration: TextDecoration.lineThrough,
         ),
         href: kDefaultTextStyle.copyWith(
@@ -259,29 +254,53 @@ class _AppFlowyEditorBuilderState extends State<AppFlowyEditorBuilder>
           decoration: TextDecoration.underline,
         ),
         code: kDefaultTextStyle.copyWith(
-            fontSize: fontSize,
-            // fontFamily: 'monospace',
-            color: Colors.red,
-            backgroundColor: const Color.fromARGB(98, 0, 195, 255)),
+          fontSize: fontSize,
+          // fontFamily: 'monospace',
+          color: Colors.red,
+          backgroundColor: const Color.fromARGB(98, 0, 195, 255),
+        ),
       ),
     );
   }
 
   EditorStyle _buildMobileEditorStyle() {
-    return const EditorStyle.mobile(
-      // cursorColor: const Color.fromARGB(255, 134, 46, 247),
-      // selectionColor: const Color.fromARGB(50, 134, 46, 247),
-      // textStyleConfiguration: TextStyleConfiguration(
-      //   text: GoogleFonts.poppins(
-      //     fontSize: 14,
-      //     color: Colors.black,
-      //   ),
-      //   code: GoogleFonts.sourceCodePro(
-      //     backgroundColor: Colors.grey.shade200,
-      //   ),
-      // ),
-      // padding: widget.cubit.state.padding,
-      padding: EdgeInsets.all(0),
+    const double fontSize = 18;
+    return EditorStyle.mobile(
+      padding: const EdgeInsets.all(0),
+      cursorColor: Colors.blue,
+      selectionColor: Colors.grey.shade300,
+      textStyleConfiguration: TextStyleConfiguration(
+        text: kDefaultTextStyle.copyWith(
+          fontSize: fontSize,
+        ),
+        bold: kDefaultTextStyle.copyWith(
+          fontSize: fontSize,
+          fontWeight: FontWeight.bold,
+        ),
+        italic: kDefaultTextStyle.copyWith(
+          fontSize: fontSize,
+          fontStyle: FontStyle.italic,
+        ),
+        underline: kDefaultTextStyle.copyWith(
+          fontSize: fontSize,
+          decoration: TextDecoration.underline,
+        ),
+        strikethrough: kDefaultTextStyle.copyWith(
+          fontSize: fontSize,
+          decoration: TextDecoration.lineThrough,
+        ),
+        href: kDefaultTextStyle.copyWith(
+          fontSize: fontSize,
+          color: Colors.lightBlue,
+          decoration: TextDecoration.underline,
+        ),
+        code: kDefaultTextStyle.copyWith(
+          fontSize: fontSize,
+          // fontFamily: 'monospace',
+          color: Colors.red,
+          backgroundColor: const Color.fromARGB(98, 0, 195, 255),
+        ),
+      ),
     );
   }
 }
