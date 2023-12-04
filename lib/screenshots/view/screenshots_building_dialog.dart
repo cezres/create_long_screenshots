@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:archive/archive.dart';
 import 'package:create_long_screenshots/main.dart';
 import 'package:create_long_screenshots/screenshots/cubit/screenshots_cubit.dart';
+import 'package:create_long_screenshots/widgets/sidebar/sidebar.dart';
 import 'package:file_saver/file_saver.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,13 +40,26 @@ class _ScreenshotsBuildingDialogState extends State<ScreenshotsBuildingDialog> {
   @override
   Widget build(BuildContext context) {
     return CupertinoAlertDialog(
-      title: const Text("正在生成截图"),
+      title: const Text(
+        "正在生成截图",
+        style: kDefaultTextStyle,
+      ),
       content: Column(
         children: [
-          Text(_message),
-          if (_subMessage.isNotEmpty) Text(_subMessage),
+          Text(
+            _message,
+            style: kDefaultTextStyle,
+          ),
+          if (_subMessage.isNotEmpty)
+            Text(
+              _subMessage,
+              style: kDefaultTextStyle,
+            ),
           CupertinoButton(
-            child: const Text("Cancel"),
+            child: const Text(
+              "取消",
+              style: kDefaultTextStyle,
+            ),
             onPressed: () {
               Navigator.pop(context);
             },
@@ -63,7 +77,7 @@ class _ScreenshotsBuildingDialogState extends State<ScreenshotsBuildingDialog> {
 
     for (var i = 0; i < screenshots.state.pages.length; i++) {
       setState(() {
-        _message = "正在生成第${i + 1}(${screenshots.state.pages.length})";
+        _message = "正在生成第${i + 1}张 (共${screenshots.state.pages.length}张)";
       });
       await Future.delayed(const Duration(milliseconds: 100));
 
