@@ -101,7 +101,7 @@ class ScreenshotCoverCubit extends CachedCubit<ScreenshotCoverState> {
                     page.state.title,
                     style: kDefaultTextStyle.copyWith(
                       color: Colors.white,
-                      fontSize: 40,
+                      fontSize: 24 * 3,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

@@ -334,9 +334,10 @@ class ScreenshotPageCubit extends CachedCubit<ScreenshotPageState>
     int? expandHeight,
   }) async {
     final ScreenshotController controller = ScreenshotController();
-    const double width = 1440;
-    // const double pixelRatio = 3;
-    const double pixelRatio = 2;
+    // const double width = 1440;
+    const double width = 990;
+    const double pixelRatio = 3;
+    // const double pixelRatio = 2;
     const double viewWidth = width / pixelRatio;
 
     final bytes = await controller.captureFromLongWidget(
