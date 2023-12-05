@@ -1,7 +1,6 @@
 import 'package:create_long_screenshots/screenshot_content/cubit/screenshot_content_cubit.dart';
 import 'package:create_long_screenshots/screenshot_content/text/text_screenshot_content_editor.dart';
 import 'package:create_long_screenshots/screenshot_content/text/text_screenshot_content_preview.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 class TextScreenshotContentCubit
@@ -52,13 +51,7 @@ class TextScreenshotContentCubit
   @override
   Future<ScreenshotContentCubit<TextScreenshotContentState>> initialize(
       BuildContext context) async {
-    // await Navigator.of(context).push(
-    //   PageRouteBuilder(
-    //     pageBuilder: (context, animation, secondaryAnimation) =>
-    //         TextScreenshotContentEditor(cubit: this),
-    //     transitionDuration: const Duration(),
-    //   ),
-    // );
+    page.selectContent(this);
     return this;
   }
 
@@ -67,13 +60,12 @@ class TextScreenshotContentCubit
     save();
   }
 
-  void updatePadding(EdgeInsets padding) {
-    emit(state.copyWith(padding: padding));
-    save();
-  }
+  @override
+  TextScreenshotContentState buildStateWithPadding(EdgeInsets padding) =>
+      state.copyWith(padding: padding);
 }
 
-class TextScreenshotContentState extends Equatable {
+class TextScreenshotContentState extends ScreenshotContentState {
   const TextScreenshotContentState({
     this.documentJson = const {
       'document': {
@@ -92,17 +84,15 @@ class TextScreenshotContentState extends Equatable {
         ],
       }
     },
-    this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    super.padding,
   });
 
   final Map<String, dynamic> documentJson;
 
-  final EdgeInsets padding;
-
   @override
   List<Object?> get props => [
+        ...super.props,
         documentJson,
-        padding,
       ];
 
   TextScreenshotContentState copyWith({

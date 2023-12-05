@@ -3,7 +3,6 @@ import 'package:create_long_screenshots/image_picker/view/cached_image_view.dart
 import 'package:create_long_screenshots/screenshot_content/cubit/screenshot_content_cubit.dart';
 import 'package:create_long_screenshots/screenshot_content/image/image_screenshot_content_editor.dart';
 import 'package:create_long_screenshots/screenshot_content/image/image_screenshot_content_preview.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 class ImageScreenshotContentCubit
@@ -88,34 +87,30 @@ class ImageScreenshotContentCubit
     Future.microtask(() => save());
   }
 
-  void updatePadding(EdgeInsets padding) {
-    emit(state.copyWith(padding: padding));
-    Future.microtask(() => save());
+  @override
+  ImageScreenshotContentState buildStateWithPadding(EdgeInsets padding) {
+    return state.copyWith(padding: padding);
   }
 }
 
-class ImageScreenshotContentState extends Equatable {
+class ImageScreenshotContentState extends ScreenshotContentState {
   const ImageScreenshotContentState({
     this.imageId = 0,
     this.width = 100,
     this.height = 50,
-    this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    super.padding,
   });
 
   final int imageId;
   final int width;
   final int height;
-  final EdgeInsets padding;
 
   @override
   List<Object?> get props => [
+        ...super.props,
         imageId,
         width,
         height,
-        padding.top,
-        padding.left,
-        padding.right,
-        padding.bottom,
       ];
 
   ImageScreenshotContentState copyWith({

@@ -80,7 +80,6 @@ class MyApp extends StatelessWidget {
       child: Builder(
         builder: (context) {
           kContext = context;
-          // return const ScreenshotsView();
           return const Material(child: MainPage());
         },
       ),

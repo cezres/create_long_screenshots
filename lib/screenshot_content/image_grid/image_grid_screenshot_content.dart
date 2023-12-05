@@ -1,14 +1,12 @@
-import 'package:create_long_screenshots/image_picker/cubit/image_caches_cubit.dart';
 import 'package:create_long_screenshots/image_picker/view/cached_image_view.dart';
+import 'package:create_long_screenshots/screenshot_content/cubit/image_list.dart';
 import 'package:create_long_screenshots/screenshot_content/cubit/screenshot_content_cubit.dart';
 import 'package:create_long_screenshots/screenshot_content/image_grid/image_grid_screenshot_content_editor.dart';
 import 'package:create_long_screenshots/screenshot_content/image_grid/image_grid_screenshot_content_preview.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:sembast/sembast.dart';
 
 class ImageGridScreenshotContentCubit
-    extends ScreenshotContentCubit<ImageGridScreenshotContentState> {
+    extends ImageList<ImageGridScreenshotContentState> {
   ImageGridScreenshotContentCubit({required super.page, required super.id})
       : super(const ImageGridScreenshotContentState());
 
@@ -74,60 +72,6 @@ class ImageGridScreenshotContentCubit
   @override
   ScreenshotContentType get type => ScreenshotContentType.imageGrid;
 
-  @override
-  Future<void> deleteResourcesInTransaction(Transaction transaction) {
-    return kImageCaches.removeImages(state.imageIds, transaction: transaction);
-  }
-
-  @override
-  Future<void> loadResources() async {
-    if (state.imageIds.isNotEmpty) {
-      for (var element in state.imageIds) {
-        kImageCaches.loadCachedImage(element);
-      }
-      return kImageCaches.waitLoaded();
-    }
-  }
-
-  @override
-  Future<ScreenshotContentCubit<ImageGridScreenshotContentState>> initialize(
-      BuildContext context) async {
-    await pickImages(context);
-    if (state.imageIds.isEmpty) {
-      throw Exception('No image selected');
-    }
-    return this;
-  }
-
-  Future<void> pickImages(BuildContext context) async {
-    final images = await kImageCaches.pickImages(
-      context,
-      maxCompressImageWidth: 1440,
-    );
-    if (images.isEmpty) {
-      return;
-    }
-
-    emit(
-      state.copyWith(
-        imageIds: [...state.imageIds, ...images.map((e) => e.imageId)],
-      ),
-    );
-    Future.microtask(() => save());
-  }
-
-  void removeImage(int imageId) {
-    emit(
-      state.copyWith(
-        imageIds: state.imageIds
-            .where((element) => element != imageId)
-            .toList(growable: false),
-      ),
-    );
-    kImageCaches.removeImages([imageId]);
-    Future.microtask(() => save());
-  }
-
   void moveImage(int oldIndex, int newIndex) {
     final imageId = state.imageIds[oldIndex];
     final imageIds = state.imageIds.toList();
@@ -137,9 +81,25 @@ class ImageGridScreenshotContentCubit
     Future.microtask(() => save());
   }
 
-  void updatePadding(EdgeInsets padding) {
-    emit(state.copyWith(padding: padding));
-    Future.microtask(() => save());
+  @override
+  ImageGridScreenshotContentState buildStateWithPadding(EdgeInsets padding) {
+    return state.copyWith(padding: padding);
+  }
+
+  @override
+  ImageGridScreenshotContentState buildStateWithImageIds(List<int> imageIds) =>
+      state.copyWith(imageIds: imageIds);
+
+  @override
+  ImageGridScreenshotContentState buildStateWithListConfig(
+      {int? crossAxisCount,
+      double? crossAxisSpacing,
+      double? mainAxisSpacing}) {
+    return state.copyWith(
+      crossAxisCount: crossAxisCount,
+      crossAxisSpacing: crossAxisSpacing,
+      mainAxisSpacing: mainAxisSpacing,
+    );
   }
 
   void updateGrid({
@@ -158,36 +118,22 @@ class ImageGridScreenshotContentCubit
   }
 }
 
-class ImageGridScreenshotContentState extends Equatable {
+class ImageGridScreenshotContentState extends ImageListState {
   const ImageGridScreenshotContentState({
-    this.imageIds = const [],
-    this.crossAxisCount = 3,
-    this.crossAxisSpacing = 8,
-    this.mainAxisSpacing = 8,
+    super.imageIds,
+    super.crossAxisCount,
+    super.crossAxisSpacing,
+    super.mainAxisSpacing,
+    super.padding,
     this.childAspectRatio = 1,
-    this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
   });
-
-  final List<int> imageIds;
-
-  final int crossAxisCount;
-
-  final double crossAxisSpacing;
-
-  final double mainAxisSpacing;
 
   final double childAspectRatio;
 
-  final EdgeInsets padding;
-
   @override
   List<Object?> get props => [
-        imageIds,
-        crossAxisCount,
-        crossAxisSpacing,
-        mainAxisSpacing,
+        ...super.props,
         childAspectRatio,
-        padding,
       ];
 
   ImageGridScreenshotContentState copyWith({

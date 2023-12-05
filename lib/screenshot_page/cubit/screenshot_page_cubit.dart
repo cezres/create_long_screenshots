@@ -210,6 +210,8 @@ class ScreenshotPageCubit extends CachedCubit<ScreenshotPageState>
       ScreenshotContentType.text,
       ScreenshotContentType.image,
       ScreenshotContentType.imageGrid,
+      // ScreenshotContentType.imageWaterfallFlow,
+      // ScreenshotContentType.text2,
     ]
         .map(
           (e) => CupertinoActionSheetAction(
@@ -335,8 +337,6 @@ class ScreenshotPageCubit extends CachedCubit<ScreenshotPageState>
     const double width = 1440;
     const double pixelRatio = 3;
     const double viewWidth = width / pixelRatio;
-
-    // final cover = kContext.read<ScreenshotCoverCubit>().state;
 
     final bytes = await controller.captureFromLongWidget(
       Container(

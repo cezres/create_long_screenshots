@@ -1,6 +1,7 @@
 import 'package:create_long_screenshots/image_picker/view/cached_image_view.dart';
 import 'package:create_long_screenshots/main.dart';
 import 'package:create_long_screenshots/screenshot_content/image/image_screenshot_content_editor.dart';
+import 'package:create_long_screenshots/screenshot_content/image_grid/grid_config_editor_dialog.dart';
 import 'package:create_long_screenshots/screenshot_content/image_grid/image_grid_screenshot_content.dart';
 import 'package:create_long_screenshots/widgets/sidebar/sidebar.dart';
 import 'package:create_long_screenshots/widgets/sidebar/sidebar_event_button.dart';
@@ -41,8 +42,7 @@ class ImageGridScreenshotContentEditor extends StatelessWidget {
         onPressed: () {
           showDialog(
             context: context,
-            builder: (context) =>
-                ScreenshotContentGridEditorDialog(cubit: cubit),
+            builder: (context) => GridConfigEditorDialog(cubit: cubit),
           );
         },
       ),
@@ -86,19 +86,36 @@ class ImageGridScreenshotContentEditor extends StatelessWidget {
               showDialog(
                 context: context,
                 builder: (context) => CupertinoAlertDialog(
-                  title: const Text("删除图片"),
-                  content: const Text("确定要删除这张图片吗？"),
+                  title: Text(
+                    "删除图片",
+                    style: kDefaultTextStyle.copyWith(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  content: const Text(
+                    "确定要删除这张图片吗？",
+                    style: kDefaultTextStyle,
+                  ),
                   actions: [
                     CupertinoDialogAction(
-                      child: const Text("取消"),
+                      child: const Text(
+                        "取消",
+                        style: kDefaultTextStyle,
+                      ),
                       onPressed: () {
                         Navigator.pop(context);
                       },
                     ),
                     CupertinoDialogAction(
-                      child: const Text("确定"),
+                      child: Text(
+                        "确定",
+                        style: kDefaultTextStyle.copyWith(
+                          color: Colors.blue,
+                        ),
+                      ),
                       onPressed: () {
-                        cubit.removeImage(e);
+                        cubit.removeImageIds({e});
                         Navigator.pop(context);
                       },
                     ),
@@ -135,152 +152,6 @@ class ImageGridScreenshotContentEditor extends StatelessWidget {
         },
         children: children,
       ),
-    );
-  }
-}
-
-class ScreenshotContentGridEditorDialog extends StatefulWidget {
-  const ScreenshotContentGridEditorDialog({
-    super.key,
-    required this.cubit,
-  });
-
-  final ImageGridScreenshotContentCubit cubit;
-
-  @override
-  State<ScreenshotContentGridEditorDialog> createState() =>
-      _ScreenshotContentGridEditorDialogState();
-}
-
-class _ScreenshotContentGridEditorDialogState
-    extends State<ScreenshotContentGridEditorDialog> {
-  late final ValueNotifier<double> childAspectRatio;
-
-  @override
-  void initState() {
-    super.initState();
-
-    childAspectRatio = ValueNotifier(widget.cubit.state.childAspectRatio);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final crossAxisCountController = TextEditingController();
-    final crossAxisSpacingController = TextEditingController();
-    final mainAxisSpacingController = TextEditingController();
-    return CupertinoAlertDialog(
-      title: const Text("编辑间距"),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _buildInputView(
-            context,
-            controller: crossAxisCountController,
-            title: "列数量",
-            placeholder: widget.cubit.state.crossAxisCount,
-          ),
-          _buildInputView(
-            context,
-            controller: crossAxisSpacingController,
-            title: "列间距",
-            placeholder: widget.cubit.state.crossAxisSpacing.toInt(),
-          ),
-          _buildInputView(
-            context,
-            controller: mainAxisSpacingController,
-            title: "行间距",
-            placeholder: widget.cubit.state.mainAxisSpacing.toInt(),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 8, bottom: 8),
-            child: Text(
-              "宽高比",
-              style: kDefaultTextStyle.copyWith(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          ValueListenableBuilder(
-            valueListenable: childAspectRatio,
-            builder: (context, value, child) => CupertinoSegmentedControl(
-              children: {
-                1 / 1: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-                  child: Text("1:1"),
-                ),
-                1 / 2: const Text("1:2"),
-                3 / 4: const Text("3:4"),
-                4 / 3: const Text("4:3"),
-                9 / 16: const Text("9:16"),
-                16 / 9: const Text("16:9"),
-              },
-              groupValue: value,
-              onValueChanged: (value) {
-                childAspectRatio.value = value;
-              },
-            ),
-          ),
-        ],
-      ),
-      actions: [
-        CupertinoButton(
-          child: const Text("取消"),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        CupertinoButton(
-          child: const Text("确定"),
-          onPressed: () {
-            Navigator.pop(context);
-
-            widget.cubit.updateGrid(
-              crossAxisCount: int.tryParse(crossAxisCountController.text),
-              crossAxisSpacing:
-                  double.tryParse(crossAxisSpacingController.text),
-              mainAxisSpacing: double.tryParse(mainAxisSpacingController.text),
-              childAspectRatio: childAspectRatio.value,
-            );
-          },
-        ),
-      ],
-    );
-  }
-
-  Widget _buildInputView(
-    BuildContext context, {
-    required TextEditingController controller,
-    required String title,
-    required int placeholder,
-  }) {
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(right: 8),
-          child: Text(
-            title,
-            style: kDefaultTextStyle.copyWith(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        Expanded(
-          child: CupertinoTextField(
-            controller: controller,
-            decoration: const BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                  color: Colors.grey,
-                ),
-              ),
-            ),
-            placeholder: "$placeholder",
-            keyboardType: TextInputType.number,
-          ),
-        ),
-      ],
     );
   }
 }

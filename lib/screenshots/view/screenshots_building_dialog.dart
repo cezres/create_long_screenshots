@@ -40,9 +40,12 @@ class _ScreenshotsBuildingDialogState extends State<ScreenshotsBuildingDialog> {
   @override
   Widget build(BuildContext context) {
     return CupertinoAlertDialog(
-      title: const Text(
+      title: Text(
         "正在生成截图",
-        style: kDefaultTextStyle,
+        style: kDefaultTextStyle.copyWith(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        ),
       ),
       content: Column(
         children: [

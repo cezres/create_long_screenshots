@@ -85,4 +85,16 @@ class ScreenshotsCubit extends CachedCubit<ScreenshotsState> {
       ),
     ]);
   }
+
+  void reorder(int oldIndex, int newIndex) {
+    final pages = List<ScreenshotPageCubit>.from(state.pages);
+    final page = pages.removeAt(oldIndex);
+    pages.insert(newIndex, page);
+    emit(
+      state.copyWith(
+        pages: pages,
+      ),
+    );
+    resetLeftSidebar();
+  }
 }

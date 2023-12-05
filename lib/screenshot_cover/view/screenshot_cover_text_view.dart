@@ -4,6 +4,7 @@ import 'package:create_long_screenshots/screenshots/cubit/screenshots_cubit.dart
 import 'package:create_long_screenshots/widgets/sidebar/sidebar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:reorderables/reorderables.dart';
 
 class ScreenshotCoverTextView extends StatelessWidget {
   const ScreenshotCoverTextView({
@@ -30,8 +31,11 @@ class ScreenshotCoverTextView extends StatelessWidget {
             (constraints.maxHeight - runSpacing * (numberOfColumn - 1)) /
                 numberOfColumn;
 
+        final screenshots = context.read<ScreenshotsCubit>();
+
         return BlocSelector<ScreenshotsCubit, ScreenshotsState,
             List<ScreenshotPageCubit>>(
+          bloc: screenshots,
           selector: (state) => state.pages,
           builder: (context, state) {
             final children = state
@@ -64,9 +68,10 @@ class ScreenshotCoverTextView extends StatelessWidget {
                 )
                 .toList(growable: false);
 
-            return Wrap(
+            return ReorderableWrap(
               spacing: spacing,
               runSpacing: runSpacing,
+              onReorder: screenshots.reorder,
               children: children,
             );
           },

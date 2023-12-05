@@ -1,7 +1,6 @@
 import 'package:create_long_screenshots/screenshot_content/cubit/screenshot_content_cubit.dart';
 import 'package:create_long_screenshots/screenshot_content/text2/text2_editor.dart';
 import 'package:create_long_screenshots/screenshot_content/text2/text2_screenshot_content_editor.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -94,21 +93,24 @@ class Text2ScreenshotContentCubit
     ));
     save();
   }
+
+  @override
+  Text2ScreenshotContentState buildStateWithPadding(EdgeInsets padding) =>
+      state.copyWith(padding: padding);
 }
 
-class Text2ScreenshotContentState extends Equatable {
+class Text2ScreenshotContentState extends ScreenshotContentState {
   const Text2ScreenshotContentState({
     this.documentText = "点击以输入文本",
-    this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    super.padding,
   });
 
   final String documentText;
-  final EdgeInsets padding;
 
   @override
   List<Object?> get props => [
+        ...super.props,
         documentText,
-        padding,
       ];
 
   Text2ScreenshotContentState copyWith({
