@@ -58,15 +58,15 @@ class _ScreenshotsBuildingDialogState extends State<ScreenshotsBuildingDialog> {
               _subMessage,
               style: kDefaultTextStyle,
             ),
-          CupertinoButton(
-            child: const Text(
-              "取消",
-              style: kDefaultTextStyle,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          )
+          // CupertinoButton(
+          //   child: const Text(
+          //     "取消",
+          //     style: kDefaultTextStyle,
+          //   ),
+          //   onPressed: () {
+          //     Navigator.pop(context);
+          //   },
+          // )
         ],
       ),
     );

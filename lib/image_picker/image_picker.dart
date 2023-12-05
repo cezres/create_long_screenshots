@@ -180,6 +180,7 @@ Future<(Uint8List, Size)> imageCompress(
   Uint8List bytes, {
   required Size imageSize,
   required int targetWidth,
+  int quality = 95,
 }) async {
   final int width;
   final int height;
@@ -199,6 +200,7 @@ Future<(Uint8List, Size)> imageCompress(
       minWidth: width,
       minHeight: height,
       format: CompressFormat.webp,
+      quality: quality,
     );
   } catch (e) {
     await Future.delayed(const Duration(milliseconds: 50));
@@ -207,6 +209,7 @@ Future<(Uint8List, Size)> imageCompress(
       minWidth: width,
       minHeight: height,
       format: CompressFormat.jpeg,
+      quality: quality,
     );
   }
   return (result, Size(width, height));
