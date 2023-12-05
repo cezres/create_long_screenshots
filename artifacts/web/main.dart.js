@@ -71359,7 +71359,7 @@ q=B.d.dv(m/l.c.gtL())
 p=-c
 n=A.i0(o,new A.hQ(this.c.a,new A.aDP(),o),c*s,o,r*p,o,q*p,c*n)
 p=A.a9(B.d.bg(76.5),0,0,0)
-return new A.aZ(c,c,A.alW(A.eG(B.av,A.a([n,A.Ca(0,A.aG(o,A.ev(A.bA(b.c.a,o,o,o,o,B.G.a6G(B.k,40,B.ay),o,o,o),o,o,o),B.i,p,o,o,o,o,o,o,o,o),0)],t.p),B.z,B.ap,o),B.z,o),o)}}
+return new A.aZ(c,c,A.alW(A.eG(B.av,A.a([n,A.Ca(0,A.aG(o,A.ev(A.bA(b.c.a,o,o,o,o,B.G.a6G(B.k,72,B.ay),o,o,o),o,o,o),B.i,p,o,o,o,o,o,o,o,o),0)],t.p),B.z,B.ap,o),B.z,o),o)}}
 A.aDP.prototype={
 $2(a,b){return b==null?B.U:A.o5(b,B.cX,null,null)},
 $S:58}
@@ -71568,11 +71568,11 @@ var $async$pQ=A.v(function(c,d){if(c===1)return A.q(d,r)
 while(true)switch(s){case 0:m=A.a4(a).ax
 l=m.k1
 m=l==null?m.cy:l
-l=A.a([A.cT($.oZ.b_(),!1,t.Bu).aFy(a,p,720)],t.p)
+l=A.a([A.cT($.oZ.b_(),!1,t.Bu).aFy(a,p,330)],t.p)
 B.b.A(l,J.fb(p.c.b,new A.aE8(a),t.l7))
 if(b!=null)l.push(new A.aZ(null,b,null,null))
 s=3
-return A.l(new A.aDN().A1(A.aG(null,A.cI(l,B.H,B.v,B.K,null),B.i,m,null,null,null,null,null,null,null,720),a,B.pP,2),$async$pQ)
+return A.l(new A.aDN().A1(A.aG(null,A.cI(l,B.H,B.v,B.K,null),B.i,m,null,null,null,null,null,null,null,330),a,B.pP,3),$async$pQ)
 case 3:o=d
 s=4
 return A.l(A.e3(B.hY,null,t.z),$async$pQ)
@@ -71580,12 +71580,12 @@ case 4:n=A.bgx(new A.ZV(o))
 s=J.le(p.c.b)&&n.b<n.a*2?5:6
 break
 case 5:s=7
-return A.l(p.pQ(a,B.e.cr(n.a*2-n.b,2)),$async$pQ)
+return A.l(p.pQ(a,B.e.cr(n.a*2-n.b,3)),$async$pQ)
 case 7:q=d
 s=1
 break
 case 6:s=8
-return A.l(A.Fi(o,n,85,1440),$async$pQ)
+return A.l(A.Fi(o,n,85,990),$async$pQ)
 case 8:q=d.a
 s=1
 break
@@ -71742,7 +71742,7 @@ case 4:return A.r(null,r)}})
 return A.t($async$$1,r)},
 $S:83}
 A.aE8.prototype={
-$1(a){return a.zZ(this.a,720)},
+$1(a){return a.zZ(this.a,330)},
 $S:346}
 A.fv.prototype={
 ghy(){var s=this,r=J.fb(s.b,new A.aEo(),t.S)
