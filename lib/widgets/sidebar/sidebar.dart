@@ -1,15 +1,14 @@
-import 'package:chinese_font_library/chinese_font_library.dart';
 import 'package:create_long_screenshots/widgets/sidebar/sidebar_page_button.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-final kDefaultTextStyle = const TextStyle(
-  // fontFamily: 'NotoSansSC',
+const kDefaultTextStyle = TextStyle(
+  fontFamily: 'NotoSansSC',
   fontSize: 14,
   color: Colors.black,
   fontWeight: FontWeight.w400,
-).useSystemChineseFont();
+);
 
 class SidebarCubit extends Cubit<SidebarState> {
   SidebarCubit(super.initialState);

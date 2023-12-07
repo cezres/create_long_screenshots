@@ -1,5 +1,4 @@
 import 'package:appflowy_editor/appflowy_editor.dart';
-import 'package:chinese_font_library/chinese_font_library.dart';
 import 'package:create_long_screenshots/image_picker/cubit/image_caches_cubit.dart';
 import 'package:create_long_screenshots/screenshot_cover/cubit/screenshot_cover_cubit.dart';
 import 'package:create_long_screenshots/screenshot_cover/view/screenshot_cover_page.dart';
@@ -93,8 +92,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
-        // fontFamily: "NotoSansSC",
-      ).useSystemChineseFont(Brightness.light),
+        fontFamily: "NotoSansSC",
+      ),
       themeMode: ThemeMode.light,
       home: home,
     );

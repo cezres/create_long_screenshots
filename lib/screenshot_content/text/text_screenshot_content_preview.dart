@@ -39,6 +39,7 @@ class TextScreenshotContentPreview extends StatelessWidget {
   Widget _buildContent(BuildContext context,
       {required TextScreenshotContentState state}) {
     return AppFlowyEditorBuilder(
+      key: ValueKey(cubit.id),
       cubit: cubit,
       editable: false,
       focusNode: null,
