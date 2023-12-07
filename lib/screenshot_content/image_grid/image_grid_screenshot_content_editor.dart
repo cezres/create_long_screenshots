@@ -93,13 +93,13 @@ class ImageGridScreenshotContentEditor extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  content: const Text(
+                  content: Text(
                     "确定要删除这张图片吗？",
                     style: kDefaultTextStyle,
                   ),
                   actions: [
                     CupertinoDialogAction(
-                      child: const Text(
+                      child: Text(
                         "取消",
                         style: kDefaultTextStyle,
                       ),

@@ -73,30 +73,31 @@ class _GridConfigEditorDialogState extends State<GridConfigEditorDialog> {
             valueListenable: childAspectRatio,
             builder: (context, value, child) => CupertinoSegmentedControl(
               children: {
-                1 / 1: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+                1 / 1: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
                   child: Text(
                     "1:1",
                     style: kDefaultTextStyle,
                   ),
                 ),
-                1 / 2: const Text(
+                1 / 2: Text(
                   "1:2",
                   style: kDefaultTextStyle,
                 ),
-                3 / 4: const Text(
+                3 / 4: Text(
                   "3:4",
                   style: kDefaultTextStyle,
                 ),
-                4 / 3: const Text(
+                4 / 3: Text(
                   "4:3",
                   style: kDefaultTextStyle,
                 ),
-                9 / 16: const Text(
+                9 / 16: Text(
                   "9:16",
                   style: kDefaultTextStyle,
                 ),
-                16 / 9: const Text(
+                16 / 9: Text(
                   "16:9",
                   style: kDefaultTextStyle,
                 ),
@@ -111,7 +112,7 @@ class _GridConfigEditorDialogState extends State<GridConfigEditorDialog> {
       ),
       actions: [
         CupertinoButton(
-          child: const Text(
+          child: Text(
             "取消",
             style: kDefaultTextStyle,
           ),

@@ -64,9 +64,12 @@ Future<Map<int, SelectedImage>> _handleImageFiles(
   return await showDialog(
     context: context,
     builder: (context) => CupertinoAlertDialog(
-      title: const Text(
+      title: Text(
         '处理图片文件',
-        style: kDefaultTextStyle,
+        style: kDefaultTextStyle.copyWith(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        ),
       ),
       content: _ImageCompressView(
         files: value.files,

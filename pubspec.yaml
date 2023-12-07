@@ -53,6 +53,8 @@ dependencies:
   appflowy_editor: ^2.0.0
   quill_html_editor: ^2.2.7
 
+  chinese_font_library: ^1.1.0
+
   # Image
   image_size_getter: ^2.1.2
   screenshot: ^2.1.0
@@ -97,12 +99,12 @@ flutter:
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
 
-  fonts:
-    - family: NotoSansSC
-      fonts:
-        - asset: fonts/NotoSansSC-Regular.ttf
-        - asset: fonts/NotoSansSC-Bold.ttf
-          weight: 700
+  # fonts:
+  #   - family: NotoSansSC
+  #     fonts:
+  #       - asset: fonts/NotoSansSC-Regular.ttf
+  #       - asset: fonts/NotoSansSC-Bold.ttf
+  #         weight: 700
         # - asset: fonts/NotoSansSC-Medium.ttf
         #   weight: 500
         # - asset: fonts/NotoSansSC-Light.ttf
