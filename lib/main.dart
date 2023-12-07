@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    const title = 'Create Weibo Screenshots';
+    const title = '创建长截图';
     const localizationsDelegates = [
       AppFlowyEditorLocalizations.delegate,
     ];
