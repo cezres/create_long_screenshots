@@ -107,8 +107,8 @@ ScreenshotContentCubit buildScreenshotContent(Map<String, dynamic> json,
       return ImageScreenshotContentCubit(page: page, id: id);
     case 2:
       return ImageGridScreenshotContentCubit(page: page, id: id);
-    case 3:
-      return Text2ScreenshotContentCubit(page: page, id: id);
+    // case 3:
+    //   return Text2ScreenshotContentCubit(page: page, id: id);
     case 4:
       return ImageWaterfallFlow(page: page, id: id);
     default:

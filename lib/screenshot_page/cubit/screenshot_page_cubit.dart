@@ -366,9 +366,9 @@ class ScreenshotPageCubit extends CachedCubit<ScreenshotPageState>
     await Future.delayed(const Duration(milliseconds: 60));
 
     final size = ImageSizeGetter.getSize(MemoryInput(bytes));
-    if (state.contents.isNotEmpty && size.height < size.width * 2) {
+    if (state.contents.isNotEmpty && size.height < size.width * 4) {
       // 拓展高度
-      final int expandHeight = size.width * 2 - size.height;
+      final int expandHeight = size.width * 4 - size.height;
       // ignore: use_build_context_synchronously
       return await buildScreenshot(
         context,

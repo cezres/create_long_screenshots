@@ -11,6 +11,10 @@ import 'package:image_size_getter/image_size_getter.dart';
 
 const kMaxCompressImageWidth = 300 * 3;
 
+// Future<Size> getImageSize(Uint8List bytes) {
+
+// }
+
 class SelectedImage {
   const SelectedImage({
     required this.imageId,

@@ -16,6 +16,7 @@ class TextScreenshotContentCubit
   @override
   Widget buildSliver(BuildContext context, double width, bool isEditing) {
     return TextScreenshotContentPreview(
+      key: ValueKey(id),
       cubit: this,
       width: width,
       isEditing: isEditing,

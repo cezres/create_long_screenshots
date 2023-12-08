@@ -144,6 +144,7 @@ class _AppFlowyEditorBuilderState extends State<AppFlowyEditorBuilder>
   @override
   Widget build(BuildContext context) {
     Widget editor = AppFlowyEditor(
+      key: ValueKey(widget.cubit.id),
       editorState: editorState,
       editorScrollController: editorScrollController,
       editorStyle: isMobileBrowser()
