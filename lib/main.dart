@@ -19,7 +19,7 @@ late BuildContext kContext;
 
 // flutter build web --web-renderer canvaskit --release
 // flutter run -d chrome --web-hostname 0.0.0.0 --web-port 41761 --web-renderer canvaskit --release
-// flutter build web --web-renderer canvaskit --release --dart-define=FLUTTER_WEB_CANVASKIT_URL=imgs/
+// flutter build web --web-renderer canvaskit --release --dart-define=FLUTTER_WEB_CANVASKIT_URL=./assets/canvaskit/
 
 final leftSidebar = SidebarCubit(
   const SidebarState(

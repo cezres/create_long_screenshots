@@ -36840,7 +36840,7 @@ $1(a){var s=$.dC
 s=(s==null?$.dC=A.j6(self.window.flutterConfiguration):s).b
 if(s==null)s=null
 else{s=s.canvasKitBaseUrl
-if(s==null)s=null}return(s==null?"imgs/":s)+a},
+if(s==null)s=null}return(s==null?"./assets/canvaskit/":s)+a},
 $S:36}
 A.aSL.prototype={
 $1(a){this.a.remove()
@@ -37223,7 +37223,7 @@ for(i=k.b,h=i.length,g=0;g<i.length;i.length===h||(0,A.S)(i),++g){f=i[g]
 e=$.PD
 e.toString
 d=f.a
-a6.push(p.tv(d,e.Hl(d),j))}}if(!m)a6.push(p.tv("Roboto","./assets/KFOmCnqEu92Fr1Me5WZLCzYlKw.ttf","Roboto"))
+a6.push(p.tv(d,e.Hl(d),j))}}if(!m)a6.push(p.tv("Roboto","./assets/canvaskit/KFOmCnqEu92Fr1Me5WZLCzYlKw.ttf","Roboto"))
 c=A.y(t.N,t.FK)
 b=A.a([],t.Co)
 a7=J
