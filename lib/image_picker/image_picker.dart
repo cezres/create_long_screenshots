@@ -69,7 +69,7 @@ Future<Map<int, SelectedImage>> _handleImageFiles(
     context: context,
     builder: (context) => CupertinoAlertDialog(
       title: Text(
-        '处理图片文件',
+        '压缩图片文件',
         style: kDefaultTextStyle.copyWith(
           fontSize: 18,
           fontWeight: FontWeight.bold,

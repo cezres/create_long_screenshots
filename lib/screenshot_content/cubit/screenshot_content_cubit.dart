@@ -5,7 +5,6 @@ import 'package:create_long_screenshots/screenshot_content/image/image_screensho
 import 'package:create_long_screenshots/screenshot_content/image_grid/image_grid_screenshot_content.dart';
 import 'package:create_long_screenshots/screenshot_content/image_waterfall_flow/image_waterfall_flow.dart';
 import 'package:create_long_screenshots/screenshot_content/text/text_screenshot_content.dart';
-import 'package:create_long_screenshots/screenshot_content/text2/text2_screenshot_content.dart';
 import 'package:create_long_screenshots/screenshot_page/cubit/screenshot_page_cubit.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';

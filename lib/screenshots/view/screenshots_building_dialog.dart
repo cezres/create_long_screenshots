@@ -105,9 +105,16 @@ class _ScreenshotsBuildingDialogState extends State<ScreenshotsBuildingDialog> {
       });
       await Future.delayed(const Duration(milliseconds: 60));
       // ignore: use_build_context_synchronously
-      final bytes = await page.buildScreenshot(context);
 
-      archive.addFile(ArchiveFile('image_$i.webp', bytes.length, bytes));
+      try {
+        final bytes = await page.buildScreenshot(context);
+        archive.addFile(ArchiveFile('image_$i.webp', bytes.length, bytes));
+      } catch (e) {
+        setState(() {
+          _subMessage = "绘制页面失败: $e";
+        });
+        await Future.delayed(const Duration(seconds: 4));
+      }
     }
 
     setState(() {
