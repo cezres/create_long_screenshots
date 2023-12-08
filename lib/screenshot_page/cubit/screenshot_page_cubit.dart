@@ -334,8 +334,8 @@ class ScreenshotPageCubit extends CachedCubit<ScreenshotPageState>
     int? expandHeight,
   }) async {
     final ScreenshotController controller = ScreenshotController();
-    // const double width = 1440;
-    const double width = 990;
+    const double width = 1440;
+    // const double width = 990;
     const double pixelRatio = 3;
     // const double pixelRatio = 2;
     const double viewWidth = width / pixelRatio;
@@ -379,7 +379,7 @@ class ScreenshotPageCubit extends CachedCubit<ScreenshotPageState>
       bytes,
       imageSize: size,
       targetWidth: width.toInt(),
-      quality: 85,
+      quality: 90,
     );
 
     return result.$1;
