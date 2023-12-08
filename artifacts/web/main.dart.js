@@ -37223,7 +37223,7 @@ for(i=k.b,h=i.length,g=0;g<i.length;i.length===h||(0,A.S)(i),++g){f=i[g]
 e=$.PD
 e.toString
 d=f.a
-a6.push(p.tv(d,e.Hl(d),j))}}if(!m)a6.push(p.tv("Roboto","https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Me5WZLCzYlKw.ttf","Roboto"))
+a6.push(p.tv(d,e.Hl(d),j))}}if(!m)a6.push(p.tv("Roboto","./assets/KFOmCnqEu92Fr1Me5WZLCzYlKw.ttf","Roboto"))
 c=A.y(t.N,t.FK)
 b=A.a([],t.Co)
 a7=J
