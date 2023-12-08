@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:archive/archive.dart';
+import 'package:create_long_screenshots/image_picker/image_picker.dart';
 import 'package:create_long_screenshots/main.dart';
 import 'package:create_long_screenshots/screenshots/cubit/screenshots_cubit.dart';
 import 'package:create_long_screenshots/widgets/sidebar/sidebar.dart';
@@ -107,7 +108,23 @@ class _ScreenshotsBuildingDialogState extends State<ScreenshotsBuildingDialog> {
       // ignore: use_build_context_synchronously
 
       try {
-        final bytes = await page.buildScreenshot(context);
+        final results = await page.buildScreenshot(context);
+
+        setState(() {
+          _subMessage = "压缩图片";
+        });
+
+        await Future.delayed(const Duration(milliseconds: 60));
+
+        final result = await imageCompress(
+          results.$1,
+          imageSize: results.$2,
+          targetWidth: 1440,
+          quality: 90,
+        );
+
+        final bytes = result.$1;
+
         archive.addFile(ArchiveFile('image_$i.webp', bytes.length, bytes));
       } catch (e) {
         setState(() {

@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:create_long_screenshots/common/cached_cubit.dart';
-import 'package:create_long_screenshots/image_picker/image_picker.dart';
 import 'package:create_long_screenshots/main.dart';
 import 'package:create_long_screenshots/screenshot_content/cubit/screenshot_content_cubit.dart';
 import 'package:create_long_screenshots/screenshot_cover/cubit/screenshot_cover_cubit.dart';
@@ -329,7 +328,7 @@ class ScreenshotPageCubit extends CachedCubit<ScreenshotPageState>
     }
   }
 
-  Future<Uint8List> buildScreenshot(
+  Future<(Uint8List, Size)> buildScreenshot(
     BuildContext context, {
     int? expandHeight,
   }) async {
@@ -358,7 +357,7 @@ class ScreenshotPageCubit extends CachedCubit<ScreenshotPageState>
           ],
         ),
       ),
-      delay: const Duration(seconds: 3),
+      delay: const Duration(seconds: 2),
       pixelRatio: pixelRatio,
       context: context,
     );
@@ -374,16 +373,18 @@ class ScreenshotPageCubit extends CachedCubit<ScreenshotPageState>
       // ignore: use_build_context_synchronously
       return await buildScreenshot(
         context,
-        expandHeight: (expandHeight ~/ pixelRatio) + 200,
+        expandHeight: (expandHeight ~/ pixelRatio),
       );
     }
-    final result = await imageCompress(
-      bytes,
-      imageSize: size,
-      targetWidth: width.toInt(),
-      quality: 90,
-    );
 
-    return result.$1;
+    return (bytes, size);
+    // final result = await imageCompress(
+    //   bytes,
+    //   imageSize: size,
+    //   targetWidth: width.toInt(),
+    //   quality: 90,
+    // );
+
+    // return result.$1;
   }
 }
